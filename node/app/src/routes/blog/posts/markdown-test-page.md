@@ -3,8 +3,7 @@ title: Markdown Test Page
 date: 2019-06-16T12:51:00.000Z
 ---
 
-A sample page with the most common elements of an article, including headings, paragraphs, lists, and images.
-Use it as a starting point for applying your own styles.
+よく使用されるmarkdownの記述方法を列挙したサンプルページです．参考にできそうなので，そのまま置いておきます．
 
 <!-- more -->
 

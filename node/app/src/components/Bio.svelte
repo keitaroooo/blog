@@ -1,3 +1,13 @@
+<div>
+  <img src="keitaro.jpg" alt="Keitaro Yamaguchi" />
+  <p>
+    ケイタロです. うどん・寿司・天ぷらが好きです．<br>
+    <a href="https://www.twitter.com/keitaroudon" target="_blank">Twitter</a>,
+    <a href="https://www.github.com/keitaroooo" target="_blank">GitHub</a>,
+    <a href="https://www.instagram.com/keitaroudom" target="_blank">Instagram</a>.
+  </p>
+</div>
+
 <style>
   div {
     align-items: center;
@@ -17,13 +27,3 @@
     font-size: 1.125rem;
   }
 </style>
-
-<div>
-  <img src="profile-pic.png" alt="Maxi Ferreira">
-  <p>
-    Hi, I'm <strong>Maxi</strong>. I'm a software engineer and data scientist from Córdoba, Argentina.
-    You can follow me on <a href="https://www.twitter.com/Charca" target="_blank">Twitter</a>,
-    see some of my work on <a href="https://www.github.com/Charca" target="_blank">GitHub</a>,
-    or read more about me on <a href="https://www.maxiferreira.com" target="_blank">my website</a>.
-  </p>
-</div>
