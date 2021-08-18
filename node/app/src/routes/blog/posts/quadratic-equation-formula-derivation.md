@@ -3,7 +3,16 @@ title: 2次方程式を解の公式を使わずに解く
 date: 2019-02-22T11:04+09:00
 ---
 
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
 
 2次方程式を習ったとき解の公式を覚えされられたと思います．
 
