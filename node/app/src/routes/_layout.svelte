@@ -46,6 +46,14 @@
 
   <footer>
     <span>
+      <a class='{segment === "terms" ? "selected" : ""}' href='terms'>Terms</a>
+      |
+      <a class='{segment === "privacy" ? "selected" : ""}' href='privacy'>Privacy</a>
+      |
+      <a class='{segment === "contact" ? "selected" : ""}' href='contact'>Contact</a>
+    </span>
+    <br/>
+    <span>
       &copy; {new Date().getFullYear()} KeitarooOO Blog.
       Powered by <a href="https://sapper.svelte.dev" target="_blank">Sapper</a>.
       Template by <a href="https://www.twitter.com/Charca" target="_blank">Maxi Ferreira</a>.
