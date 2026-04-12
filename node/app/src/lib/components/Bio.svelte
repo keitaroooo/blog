@@ -1,5 +1,5 @@
 <div>
-  <img src="keitaro.jpg" alt="Keitaro Yamaguchi" />
+  <img src="/keitaro.jpg" alt="Keitaro Yamaguchi" />
   <p>
     ケイタロです. うどん・寿司・天ぷらが好きです．<br>
     <a href="https://www.twitter.com/keitaroudon" target="_blank">Twitter</a>,

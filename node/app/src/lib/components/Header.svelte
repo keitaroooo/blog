@@ -1,8 +1,6 @@
 <script>
-  import Logo from './Logo.svelte'
-  import Nav from './Nav.svelte'
-
-  export let segment
+  import Logo from './Logo.svelte';
+  import Nav from './Nav.svelte';
 </script>
 
 <style>
@@ -17,5 +15,5 @@
 
 <header>
   <Logo />
-  <Nav {segment} />
+  <Nav />
 </header>

@@ -1,7 +1,5 @@
 <script>
-  import Header from '../components/Header.svelte';
-
-  export let segment;
+  import Header from '$lib/components/Header.svelte';
 </script>
 
 <style>
@@ -38,24 +36,24 @@
 </style>
 
 <div class="layout">
-  <Header {segment}/>
+  <Header />
 
   <main>
-    <slot></slot>
+    <slot />
   </main>
 
   <footer>
     <span>
-      <a class='{segment === "terms" ? "selected" : ""}' href='terms'>Terms</a>
+      <a href="/terms">Terms</a>
       |
-      <a class='{segment === "privacy" ? "selected" : ""}' href='privacy'>Privacy</a>
+      <a href="/privacy">Privacy</a>
       |
-      <a class='{segment === "contact" ? "selected" : ""}' href='contact'>Contact</a>
+      <a href="/contact">Contact</a>
     </span>
     <br/>
     <span>
       &copy; {new Date().getFullYear()} KeitarooOO Blog.
-      Powered by <a href="https://sapper.svelte.dev" target="_blank">Sapper</a>.
+      Powered by <a href="https://kit.svelte.dev" target="_blank">SvelteKit</a>.
       Template by <a href="https://www.twitter.com/Charca" target="_blank">Maxi Ferreira</a>.
     </span>
   </footer>
