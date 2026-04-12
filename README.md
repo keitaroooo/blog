@@ -10,7 +10,6 @@
 ```sh
 cd node/app && npm install && npm run dev
 ```
-
 ## Infra
 
 - **デプロイ**: Netlify — `node/app/netlify.toml` で設定、`main` push で自動デプロイ
