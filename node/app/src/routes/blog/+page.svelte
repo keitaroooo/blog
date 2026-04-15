@@ -1,13 +1,5 @@
-<script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`blog.json`).then(r => r.json()).then(posts => {
-      return { posts };
-    });
-  }
-</script>
-
 <script>
-  export let posts;
+  export let data;
 </script>
 
 <style>
@@ -35,13 +27,13 @@
 
 <div class="container">
   <h1>Blog</h1>
-  {#each posts as post, index}
+  {#each data.posts as post, index}
     {#if index}
       <hr />
     {/if}
     <div class="post-item">
       <h2>
-        <a rel='prefetch' href='blog/{post.slug}'>{post.title}</a>
+        <a href="/blog/{post.slug}">{post.title}</a>
       </h2>
       <p>{post.excerpt}</p>
       <div class="post-item-footer">

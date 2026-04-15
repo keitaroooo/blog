@@ -1,5 +1,10 @@
 <script>
-  export let segment;
+  import { page } from '$app/stores';
+
+  function getSegment(pathname) {
+    const parts = pathname.split('/').filter(Boolean);
+    return parts[0] || '';
+  }
 </script>
 
 <style>
@@ -49,7 +54,7 @@
 </style>
 
 <nav>
-  <a class='{segment === undefined ? "selected" : ""}' href='.'>home</a>
-  <a class='{segment === "about" ? "selected" : ""}' href='about'>about</a>
-  <a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a>
+  <a class={getSegment($page.url.pathname) === '' ? 'selected' : ''} href="/">home</a>
+  <a class={getSegment($page.url.pathname) === 'about' ? 'selected' : ''} href="/about">about</a>
+  <a class={getSegment($page.url.pathname) === 'blog' ? 'selected' : ''} href="/blog">blog</a>
 </nav>
