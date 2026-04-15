@@ -3,6 +3,9 @@
   "description": "KeitarooOO Blog",
   "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite dev",
