@@ -28,10 +28,10 @@ fi
 echo "Site ID: ${SITE_ID}"
 
 # Legacy prerendering を無効化
-curl -s -X PATCH \
+curl -s -X PUT \
   -H "Authorization: Bearer ${NETLIFY_API_TOKEN}" \
   -H "Content-Type: application/json" \
-  -d '{"prerender": ""}' \
+  -d '{"prerender": null}' \
   "https://api.netlify.com/api/v1/sites/${SITE_ID}" \
   | jq '{name: .name, prerender: .prerender}'
 

@@ -24,3 +24,4 @@ resource "netlify_site_build_settings" "blog" {
 }
 
 # Node.js バージョンは node/app/.node-version で管理（Netlify が自動検出）
+# Dependency management の UI 表示は Netlify ダッシュボードで手動変更
