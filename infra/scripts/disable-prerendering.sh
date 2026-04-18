@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Legacy prerendering を無効化する
-# 使用方法: NETLIFY_API_TOKEN=xxx ./scripts/disable-prerendering.sh
+# 使用方法: source infra/scripts/load_netlify_tokens.sh && infra/scripts/disable-prerendering.sh
 #
 # Netlify Terraform provider には prerendering 設定のリソースが存在しないため、
 # API を直接呼び出して無効化する。
