@@ -1,5 +1,5 @@
 provider "netlify" {
-  token = var.netlify_api_token
+  token = var.netlify_token
 }
 
 # サイト名: cranky-carson-643be0

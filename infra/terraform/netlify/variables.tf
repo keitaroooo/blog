@@ -1,4 +1,4 @@
-variable "netlify_api_token" {
+variable "netlify_token" {
   type      = string
   sensitive = true
 }
