@@ -49,9 +49,9 @@ tags: [writing, travel]
 ### 清書の流れ
 
 ```
-keitaro-yamaguchi/{assets,trip,diary}/  →  blog/docs/（ここで候補管理）
+keitaro-yamaguchi/{assets,trip,diary}/  →  blog/docs/（main 直 push）
         ↓ 個人情報・金額をマスク
-node/app/src/routes/blog/posts/*.md  →  Netlify
+posts/*.md  →  PR → merge  →  Netlify
 ```
 
 ## 参照

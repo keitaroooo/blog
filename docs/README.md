@@ -17,6 +17,6 @@ keitaro-yamaguchi/diary/ · trip/ · Slack#times  （一次入力）
 blog/docs/*.md                                   （整理・索引）
         ↓ 清書
 posts/*.md                                       （公開記事）
-        ↓ main push
+        ↓ PR → merge main
 Netlify
 ```

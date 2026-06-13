@@ -14,6 +14,22 @@
 
 技術記事は [techblog](https://github.com/keitaroooo/techblog)。一次メモは [keitaro-yamaguchi](https://github.com/keitaroooo/keitaro-yamaguchi) の `diary/` · `trip/`。
 
+## Git（公開物だけ PR）
+
+| 変更 | ブランチ | マージ |
+|------|----------|--------|
+| `docs/` · README · infra | `main` 直 push | 確認不要（デプロイ対象外） |
+| `posts/` · 公開に効く app 変更 | feature ブランチ → **PR** | レビュー後 merge → Netlify 自動デプロイ |
+
+```bash
+git checkout -b post/example
+git push -u origin HEAD && gh pr create --title "post: …" --body "…"
+```
+
+## ガードレール
+
+`bash .githooks/install.sh` で pre-commit / pre-push の秘密情報スキャンを有効化。
+
 ## Local
 
 ```sh
