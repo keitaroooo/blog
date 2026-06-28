@@ -39,4 +39,25 @@ cd node/app && npm install && npm run dev
 
 - **デプロイ**: Netlify — `node/app/netlify.toml` で設定、`main` push で自動デプロイ
 - **DNS**: [`keitaro-yamaguchi`](https://github.com/keitaroooo/keitaro-yamaguchi) で一元管理
-- **作業ログ**: [`infra/作業ログ.md`](infra/作業ログ.md)
+
+### Terraform（ビルド設定）
+
+コード: [`infra/terraform/netlify/`](infra/terraform/netlify/) — Site `cranky-carson-643be0`（ID: `c608a141-5fa6-4f1c-8884-8688484c9895`）
+
+```fish
+source infra/load_tokens.fish
+cd infra/terraform/netlify
+terraform init && terraform plan && terraform apply
+```
+
+Netlify Personal Access Token は Bitwarden「Netlify Token」。import ブロックは `main.tf` に記載済み。
+
+### Terraform で管理できないもの
+
+- **Legacy prerendering 無効化**: `infra/scripts/disable-prerendering.sh`
+- **Dependency management の Node.js バージョン**: ダッシュボードで手動（ビルドは `node/app/.node-version` が優先）
+
+```fish
+source infra/load_tokens.fish
+./infra/scripts/disable-prerendering.sh
+```
