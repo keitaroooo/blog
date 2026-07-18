@@ -45,12 +45,13 @@ cd node/app && npm install && npm run dev
 コード: [`infra/terraform/netlify/`](infra/terraform/netlify/) — Site `cranky-carson-643be0`（ID: `c608a141-5fa6-4f1c-8884-8688484c9895`）
 
 ```fish
-source infra/load_tokens.fish
+source ~/.config/netlify/terraform.fish
+# または source infra/load_tokens.fish
 cd infra/terraform/netlify
 terraform init && terraform plan && terraform apply
 ```
 
-Netlify Personal Access Token は Bitwarden「Netlify Token」。import ブロックは `main.tf` に記載済み。
+トークン配置: `~/.config/netlify/terraform.fish`（テンプレ: [keitaro-yamaguchi `infra/secrets.example/netlify/`](https://github.com/keitaroooo/keitaro-yamaguchi/tree/main/infra/secrets.example/netlify)）。import ブロックは `main.tf` に記載済み。
 
 ### Terraform で管理できないもの
 
@@ -58,6 +59,5 @@ Netlify Personal Access Token は Bitwarden「Netlify Token」。import ブロ�
 - **Dependency management の Node.js バージョン**: ダッシュボードで手動（ビルドは `node/app/.node-version` が優先）
 
 ```fish
-source infra/load_tokens.fish
-./infra/scripts/disable-prerendering.sh
+source ~/.config/netlify/terraform.fish && ./infra/scripts/disable-prerendering.sh
 ```

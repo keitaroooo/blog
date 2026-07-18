@@ -1,13 +1,12 @@
 #!/usr/bin/env fish
-# Netlify Terraform 用の環境変数をロードする
-# Bitwarden CLI が必要: https://bitwarden.com/help/cli/
-#
-# 使い方:
-#   source infra/load_tokens.fish
-#   cd infra/terraform/netlify && terraform plan
+# Netlify Terraform 用 TF_VAR（$HOME/.config/netlify/terraform.fish）
 
-set -gx BW_SESSION (bw unlock --raw)
-set -gx TF_VAR_netlify_token (bw get password "Netlify Token")
-set -gx NETLIFY_API_TOKEN $TF_VAR_netlify_token
-
-echo "✓ NETLIFY_API_TOKEN / TF_VAR_netlify_token をセットしました"
+set -l secret "$HOME/.config/netlify/terraform.fish"
+if not test -f $secret
+    echo "error: $secret がありません" >&2
+    echo "  cp keitaro-yamaguchi/infra/secrets.example/netlify/terraform.fish.example $secret" >&2
+    echo "  chmod 600 $secret" >&2
+    exit 1
+end
+source $secret
+echo "✓ Netlify TF_VAR をセットしました ($secret)"
