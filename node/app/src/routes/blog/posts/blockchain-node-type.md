@@ -9,9 +9,9 @@ peer-to-peerまたはP2Pという用語は、ネットワークに参加して�
 
 ![](images/blockchain-node-type/20190526175634.png)
 
-<!-- ブロックチェーンについては以下の記事で説明しているので参考にして頂ければと思います。
+ブロックチェーンについては以下の記事で説明しているので参考にして頂ければと思います。
 
-[https://udonta.hatenablog.com/entry/blockchain-mechanism:embed:cite] -->
+[ブロックチェーンの仕組み【暗号通貨】](/blog/blockchain-mechanism)
 
 実はノードにはいくつか種類があります。
 

@@ -29,9 +29,9 @@ date: 2019-05-29T06:54+09:00
 
 実はネットワークの参加者にもいくつか種類があり、これまでのブロックチェーンをすべて持っているノードもあれば、ブロックヘッダ（後で説明します）と必要なトランザクションしか持たないノードもあります。
 
-<!-- ノードの種類については以下の記事でも説明しているので是非参考にしてください。
+ノードの種類については以下の記事でも説明しているので是非参考にしてください。
 
-[https://udonta.hatenablog.com/entry/node-type:embed:cite] -->
+[ノードの種類【ブロックチェーン】](/blog/blockchain-node-type)
 
 4. 受け手は、自分のブロックチェーンを見ることで、自分宛てのトランザクションがマイナー達に承認され、使える金額が増えていることを確認できます。
 
@@ -71,11 +71,11 @@ date: 2019-05-29T06:54+09:00
 
 トランザクションは作成された後、ネットワーク参加者全員に伝わり、ネットワーク参加者はそれをトランザクションプールと呼ばれる保管庫に取り込みます。
 
-<!-- ウォレットやトランザクションについては以下の記事で説明しているので是非参考にしてください。
+ウォレットやトランザクションについては以下の記事で説明しているので是非参考にしてください。
 
-[https://udonta.hatenablog.com/entry/secret-key-public-key-address-transaction:embed:cite]
+[秘密鍵・公開鍵・アドレスとトランザクション【ブロックチェーン】](/blog/blockshain-secret-key-public-key-address-transaction)
 
-[https://udonta.hatenablog.com/entry/wallet-system:embed:cite] -->
+[ウォレットの仕組み【ブロックチェーン】](/blog/blockchain-wallet-system)
 
 ## ブロックとブロックチェーン
 
@@ -144,8 +144,8 @@ nonceが分かると結果が一定の数値を下回るかという検証も簡
 
 これを書いている中で、私もまだあやふやな部分がたくさんあったので、また勉強してまとめていきたいです。
 
-<!-- また、ブロックチェーンの新しい技術についても紹介しているので良かったら見てみてください。
+また、ブロックチェーンの新しい技術についても紹介しているので良かったら見てみてください。
 
-[https://udonta.hatenablog.com/entry/segregated-witness:embed:cite]
+[Segwitの仕組み【ブロックチェーン】](/blog/blockchain-segregated-witness)
 
-[https://udonta.hatenablog.com/entry/cryptocurrency-scalability:embed:cite] -->
+[スケーラビリティへの対応【ブロックチェーン】](/blog/blockchain-scalability)

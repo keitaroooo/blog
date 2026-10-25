@@ -43,7 +43,6 @@ date: 2019-03-27T13:01+09:00
 熱田神宮観光
 
 ![](images/hitchhike-day-3-Nagoya-Toyohashi/20190325175644.jpg)
-[f:id:udonta:20190325175644j:image]
 
 習わしを遠くから見つめていました。
 
