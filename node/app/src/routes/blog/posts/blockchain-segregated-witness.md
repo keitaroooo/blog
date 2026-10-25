@@ -13,9 +13,9 @@ date: 2019-06-28T07:00+09:00
 
 しかし、TXIDは、unlocking scriptも含めたデータから生成されるので、malleability問題が起こってしまいます。
 
-<!-- トランザクションの検証とかは以下の記事でも紹介しているので是非参考にしてください。
+トランザクションの検証とかは以下の記事でも紹介しているので是非参考にしてください。
 
-[https://udonta.hatenablog.com/entry/secret-key-public-key-address-transaction:embed:cite] -->
+[秘密鍵・公開鍵・アドレスとトランザクション【ブロックチェーン】](/blog/blockshain-secret-key-public-key-address-transaction)
 
 それを根本的に解決するのがSegregated Witness（Segwit）です。
 
@@ -41,6 +41,6 @@ P2PKHやP2SHの形式で記述されたlocking scriptを持つUTXOを使用す�
 
 これにより、ブロックに入れられるトランザクションの数が多少増えるみたいですが、恐らくこれは副次的な効果で、本質は初めにも述べたようにmalleability問題を解決することで、オフチェーンを使うペイメントチャネルを構築し、スケーラビリティ問題の解決を目指すという所だと思います。
 
-<!-- ブロックチェーンの基本的な流れについては以下の記事で説明しているので参考にして頂ければ幸いです。
+ブロックチェーンの基本的な流れについては以下の記事で説明しているので参考にして頂ければ幸いです。
 
-[https://udonta.hatenablog.com/entry/blockchain-mechanism:embed:cite] -->
+[ブロックチェーンの仕組み【暗号通貨】](/blog/blockchain-mechanism)
