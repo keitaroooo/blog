@@ -1,6 +1,8 @@
 ---
 title: AIが仕事を奪うって良いことじゃない？
 date: 2019-04-02T15:05+09:00
+tags:
+  - IT
 ---
 
 ![](images/artificial-intelligence-take-away-human-jobs/20190402150333.jpg)

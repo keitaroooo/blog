@@ -1,4 +1,5 @@
 <script>
+  import TagNav from '$lib/components/TagNav.svelte';
   export let data;
 </script>
 
@@ -16,6 +17,11 @@
     margin-right: 16px;
   }
 
+  .post-tags a {
+    margin-right: 0.6em;
+    font-weight: 600;
+  }
+
   hr {
     margin: 60px auto;
   }
@@ -27,6 +33,7 @@
 
 <div class="container">
   <h1>Blog</h1>
+  <TagNav tags={data.tags} />
   {#each data.posts as post, index}
     {#if index}
       <hr />
@@ -38,6 +45,14 @@
       <p>{post.excerpt}</p>
       <div class="post-item-footer">
         <span class="post-item-date">— {post.printDate}</span>
+        {#if post.tags.length}
+          <span class="post-tags">
+            {#each post.tags as tag, i}
+              {#if i}&nbsp;{/if}
+              <a href="/blog/tag/{encodeURIComponent(tag)}">{tag}</a>
+            {/each}
+          </span>
+        {/if}
       </div>
     </div>
   {/each}

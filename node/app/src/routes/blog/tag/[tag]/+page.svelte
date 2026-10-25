@@ -1,0 +1,59 @@
+<script>
+  import TagNav from '$lib/components/TagNav.svelte';
+  export let data;
+</script>
+
+<style>
+  h2,
+  .post-item-footer {
+    font-family: Rubik, sans-serif;
+    font-weight: 700;
+  }
+
+  .post-item-date {
+    color: #AAA;
+    text-align: left;
+    text-transform: uppercase;
+    margin-right: 16px;
+  }
+
+  .post-tags a {
+    margin-right: 0.6em;
+    font-weight: 600;
+  }
+
+  hr {
+    margin: 60px auto;
+  }
+</style>
+
+<svelte:head>
+  <title>{data.tag}</title>
+</svelte:head>
+
+<div class="container">
+  <h1>{data.tag}</h1>
+  <TagNav tags={data.tags} current={data.tag} />
+  {#each data.posts as post, index}
+    {#if index}
+      <hr />
+    {/if}
+    <div class="post-item">
+      <h2>
+        <a href="/blog/{post.slug}">{post.title}</a>
+      </h2>
+      <p>{post.excerpt}</p>
+      <div class="post-item-footer">
+        <span class="post-item-date">— {post.printDate}</span>
+        {#if post.tags.length}
+          <span class="post-tags">
+            {#each post.tags as tag, i}
+              {#if i}&nbsp;{/if}
+              <a href="/blog/tag/{encodeURIComponent(tag)}">{tag}</a>
+            {/each}
+          </span>
+        {/if}
+      </div>
+    </div>
+  {/each}
+</div>

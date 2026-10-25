@@ -1,6 +1,8 @@
 ---
 title: unityで作ったゲームをGoogle Play に公開してみた
 date: 2019-09-29T17:47+09:00
+tags:
+  - IT
 ---
 
 先日初めてunityでAndroid上で動くゲームを作って、Google Playで公開しました。

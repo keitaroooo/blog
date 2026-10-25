@@ -40,6 +40,7 @@ function processPost(fileName) {
 	const slug = fileName.replace(/\.md$/, '');
 	const { data, content: rawContent } = matter(md);
 	const { title, date } = data;
+	const tags = Array.isArray(data.tags) ? data.tags.filter((tag) => typeof tag === 'string' && tag) : [];
 
 	let content = rawContent;
 	let excerpt = '';
@@ -62,6 +63,7 @@ function processPost(fileName) {
 		slug,
 		html,
 		date,
+		tags,
 		excerpt,
 		printDate,
 		printReadingTime
@@ -73,6 +75,16 @@ export function getAllPosts() {
 	return fileNames
 		.map((fileName) => processPost(fileName))
 		.sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+export function tagCounts(posts) {
+	const counts = new Map();
+	for (const post of posts) {
+		for (const tag of post.tags) counts.set(tag, (counts.get(tag) || 0) + 1);
+	}
+	return [...counts.entries()]
+		.map(([tag, count]) => ({ tag, count }))
+		.sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag, 'ja'));
 }
 
 export function getPostBySlug(slug) {
