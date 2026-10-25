@@ -9,7 +9,7 @@
     <a
       href="/blog/tag/{encodeURIComponent(item.tag)}"
       class:selected={item.tag === current}
-    >{item.tag} {item.count}</a>
+    ><span class="name">{item.tag}</span><span class="count">{item.count}</span></a>
   {/each}
 </nav>
 
@@ -27,7 +27,14 @@
     text-decoration: none;
   }
 
-  a.selected {
+  .count {
+    margin-left: 0.35em;
+    color: #aaa;
+    font-weight: 400;
+    font-size: 0.85em;
+  }
+
+  a.selected .name {
     text-decoration: underline;
   }
 </style>
