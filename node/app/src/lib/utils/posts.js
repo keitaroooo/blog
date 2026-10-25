@@ -40,6 +40,7 @@ function processPost(fileName) {
 	const slug = fileName.replace(/\.md$/, '');
 	const { data, content: rawContent } = matter(md);
 	const { title, date } = data;
+	const tags = Array.isArray(data.tags) ? data.tags.filter((tag) => typeof tag === 'string' && tag) : [];
 
 	let content = rawContent;
 	let excerpt = '';
@@ -62,6 +63,7 @@ function processPost(fileName) {
 		slug,
 		html,
 		date,
+		tags,
 		excerpt,
 		printDate,
 		printReadingTime

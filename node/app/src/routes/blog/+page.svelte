@@ -16,6 +16,11 @@
     margin-right: 16px;
   }
 
+  .post-tags a {
+    margin-right: 0.6em;
+    font-weight: 600;
+  }
+
   hr {
     margin: 60px auto;
   }
@@ -38,6 +43,14 @@
       <p>{post.excerpt}</p>
       <div class="post-item-footer">
         <span class="post-item-date">— {post.printDate}</span>
+        {#if post.tags.length}
+          <span class="post-tags">
+            {#each post.tags as tag, i}
+              {#if i}&nbsp;{/if}
+              <a href="/blog/tag/{encodeURIComponent(tag)}">{tag}</a>
+            {/each}
+          </span>
+        {/if}
       </div>
     </div>
   {/each}

@@ -23,6 +23,15 @@
     min-width: 100px;
     width: 30%;
   }
+
+  header p.tags {
+    text-transform: none;
+    font-weight: 600;
+  }
+
+  .tags a {
+    margin-right: 0.6em;
+  }
 </style>
 
 <svelte:head>
@@ -48,6 +57,14 @@
 
 <header>
   <p>{data.post.printDate} ~ {data.post.printReadingTime}</p>
+  {#if data.post.tags.length}
+    <p class="tags">
+      {#each data.post.tags as tag, i}
+        {#if i}&nbsp;{/if}
+        <a href="/blog/tag/{encodeURIComponent(tag)}">{tag}</a>
+      {/each}
+    </p>
+  {/if}
   <h1>{data.post.title}</h1>
   <hr />
 </header>
