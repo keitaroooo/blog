@@ -1,7 +1,8 @@
-import { getAllPosts } from '$lib/utils/posts.js';
+import { getAllPosts, tagCounts } from '$lib/utils/posts.js';
 
 export function load() {
-	const posts = getAllPosts().map(({ title, slug, excerpt, printDate, tags }) => ({
+	const all = getAllPosts();
+	const posts = all.map(({ title, slug, excerpt, printDate, tags }) => ({
 		title,
 		slug,
 		excerpt,
@@ -9,5 +10,5 @@ export function load() {
 		tags
 	}));
 
-	return { posts };
+	return { posts, tags: tagCounts(all) };
 }

@@ -1,4 +1,5 @@
 <script>
+  import TagNav from '$lib/components/TagNav.svelte';
   export let data;
 </script>
 
@@ -32,6 +33,7 @@
 
 <div class="container">
   <h1>{data.tag}</h1>
+  <TagNav tags={data.tags} current={data.tag} />
   {#each data.posts as post, index}
     {#if index}
       <hr />
