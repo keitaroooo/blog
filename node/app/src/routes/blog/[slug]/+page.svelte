@@ -32,6 +32,69 @@
   .tags a {
     margin-right: 0.6em;
   }
+
+  header p.share,
+  header p.updated {
+    text-transform: none;
+  }
+
+  .share a {
+    margin-right: 0.8em;
+  }
+
+  .with-toc {
+    margin: 0 auto;
+    max-width: 42em;
+  }
+
+  .with-toc.has-toc {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: minmax(0, 42em) 14em;
+    max-width: 60em;
+  }
+
+  aside {
+    align-self: start;
+    font-size: 0.9rem;
+    position: sticky;
+    top: 1em;
+  }
+
+  aside p {
+    font-family: Rubik, sans-serif;
+    font-weight: 600;
+    margin: 0 0 0.4em;
+  }
+
+  aside ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  aside li {
+    margin: 0.3em 0;
+  }
+
+  aside li.sub {
+    margin-left: 1em;
+  }
+
+  aside a {
+    text-decoration: none;
+  }
+
+  @media (max-width: 1020px) {
+    .with-toc.has-toc {
+      grid-template-columns: minmax(0, 42em);
+    }
+
+    aside {
+      order: -1;
+      position: static;
+    }
+  }
 </style>
 
 <svelte:head>
@@ -57,6 +120,9 @@
 
 <header>
   <p>{data.post.printDate} ~ {data.post.printReadingTime}</p>
+  {#if data.post.printUpdated}
+    <p class="updated">更新 {data.post.printUpdated}</p>
+  {/if}
   {#if data.post.tags.length}
     <p class="tags">
       {#each data.post.tags as tag, i}
@@ -65,13 +131,29 @@
       {/each}
     </p>
   {/if}
+  <p class="share">
+    <a href="https://twitter.com/intent/tweet?text={encodeURIComponent(data.post.title)}&url={encodeURIComponent(data.post.url)}" target="_blank" rel="noreferrer">X</a>
+    <a href="https://b.hatena.ne.jp/entry/panel/?url={encodeURIComponent(data.post.url)}" target="_blank" rel="noreferrer">はてブ</a>
+  </p>
   <h1>{data.post.title}</h1>
   <hr />
 </header>
-<div class="container">
-  <article class="content">
-    {@html data.post.html}
-  </article>
-  <hr />
-  <Bio />
+<div class="with-toc" class:has-toc={data.post.toc.length}>
+  <div>
+    <article class="content">
+      {@html data.post.html}
+    </article>
+    <hr />
+    <Bio />
+  </div>
+  {#if data.post.toc.length}
+    <aside>
+      <p>目次</p>
+      <ol>
+        {#each data.post.toc as item}
+          <li class:sub={item.depth === 3}><a href="#{item.id}">{item.text}</a></li>
+        {/each}
+      </ol>
+    </aside>
+  {/if}
 </div>

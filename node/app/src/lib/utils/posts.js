@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { execFileSync } from 'node:child_process';
 import matter from 'gray-matter';
 import { Marked } from 'marked';
 import Prism from 'prismjs';
@@ -10,9 +11,21 @@ import { format } from 'date-fns';
 import 'prismjs/components/prism-jsx.min.js';
 
 const postsDirectory = path.resolve('src/routes/blog/posts');
+const repoRoot = path.resolve('../..');
+const site = 'https://blog.keitaroooo.com';
+
+let toc = [];
+let headingN = 0;
 
 const marked = new Marked({
 	renderer: {
+		heading({ tokens, depth }) {
+			const inner = this.parser.parseInline(tokens);
+			const plain = inner.replace(/<[^>]+>/g, '');
+			const id = `s${++headingN}`;
+			if (depth === 2 || depth === 3) toc.push({ depth, id, text: plain });
+			return `<h${depth} id="${id}">${inner}</h${depth}>\n`;
+		},
 		link({ href, title, text }) {
 			const titleAttr = title ? ` title="${title}"` : '';
 			if (href.startsWith('/')) {
@@ -41,6 +54,8 @@ function processPost(fileName) {
 	const { data, content: rawContent } = matter(md);
 	const { title, date } = data;
 	const tags = Array.isArray(data.tags) ? data.tags.filter((tag) => typeof tag === 'string' && tag) : [];
+	toc = [];
+	headingN = 0;
 
 	let content = rawContent;
 	let excerpt = '';
@@ -57,6 +72,10 @@ function processPost(fileName) {
 	const readingStats = readingTime(content);
 	const printReadingTime = readingStats.text;
 	const printDate = format(new Date(date), 'MMMM d, yyyy');
+	const updated = updatedByFile.get(fileName) || null;
+	const printUpdated = updated && format(new Date(updated), 'MMMM d, yyyy') !== printDate
+		? format(new Date(updated), 'MMMM d, yyyy')
+		: null;
 
 	return {
 		title: title || slug,
@@ -66,9 +85,40 @@ function processPost(fileName) {
 		tags,
 		excerpt,
 		printDate,
-		printReadingTime
+		printUpdated,
+		printReadingTime,
+		toc: [...toc],
+		url: `${site}/blog/${slug}`
 	};
 }
+
+function loadUpdated() {
+	const map = new Map();
+	try {
+		// shortcut: a shallow clone has no file history, so updated dates stay empty until that clone includes the commits
+		const out = execFileSync(
+			'git',
+			['log', '--format=%cI', '--name-only', '--', 'node/app/src/routes/blog/posts'],
+			{ cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 10 * 1024 * 1024 }
+		);
+		let iso = null;
+		for (const line of out.split('\n')) {
+			const trimmed = line.trim();
+			if (!trimmed) continue;
+			if (/^\d{4}-\d{2}-\d{2}T/.test(trimmed)) {
+				iso = trimmed;
+				continue;
+			}
+			const base = path.basename(trimmed);
+			if (base.endsWith('.md') && iso && !map.has(base)) map.set(base, iso);
+		}
+	} catch {
+		return map;
+	}
+	return map;
+}
+
+const updatedByFile = loadUpdated();
 
 export function getAllPosts() {
 	const fileNames = fs.readdirSync(postsDirectory).filter((f) => f.endsWith('.md'));
